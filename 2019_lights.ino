@@ -5,8 +5,9 @@
 #include "PulseAnimation.h"
 #include "RedAnimation.h"
 #include "BlueAnimation.h"
+#include "RainbowAnimation.h"
 
-const int MAX_ANIMATIONS = 3;
+const int MAX_ANIMATIONS = 4;
 const int MAX_PIXELSTRIPS = 1;
 const int BRIGHTNESS = 128;
 const int I2C_ADDRESS = 4;
@@ -28,6 +29,7 @@ void setup() {
   // set up all Animations
   animation[1] = new PulseAnimation();
   animation[2] = new RedAnimation();
+  animation[3] = new RainbowAnimation();
   animation[0] = new BlueAnimation();
 
 
