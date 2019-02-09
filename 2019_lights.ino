@@ -6,8 +6,9 @@
 #include "RedAnimation.h"
 #include "BlueAnimation.h"
 #include "RainbowAnimation.h"
+#include "CargoHatchPanel.h"
 
-const int MAX_ANIMATIONS = 4;
+const int MAX_ANIMATIONS = 5;
 const int MAX_PIXELSTRIPS = 1;
 const int BRIGHTNESS = 128;
 const int I2C_ADDRESS = 4;
@@ -31,6 +32,7 @@ void setup() {
   animation[2] = new RedAnimation();
   animation[3] = new RainbowAnimation();
   animation[0] = new BlueAnimation();
+  animation[4] = new CargoHatchPanel();
 
 
   // set up all PixelStrips
