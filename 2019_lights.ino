@@ -8,8 +8,9 @@
 #include "CargoHatchPanel.h"
 #include "tippinglight.h"
 #include "RainbowAnimation.h"
+#include "RocketAnimation.h"
 
-const int MAX_ANIMATIONS = 6;
+const int MAX_ANIMATIONS = 7;
 const int MAX_PIXELSTRIPS = 1;
 const int BRIGHTNESS = 128;
 const int I2C_ADDRESS = 4;
@@ -35,6 +36,7 @@ void setup() {
   animation[3] = new CargoHatchPanel();
   animation[4] = new RainbowAnimation();
   animation[5] = new PulseAnimation();
+  animation[6] = new RocketAnimation();
 
 
 
