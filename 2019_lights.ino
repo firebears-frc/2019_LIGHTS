@@ -6,8 +6,10 @@
 #include "RedAnimation.h"
 #include "BlueAnimation.h"
 #include "CargoHatchPanel.h"
+#include "tippinglight.h"
+#include "RainbowAnimation.h"
 
-const int MAX_ANIMATIONS = 4;
+const int MAX_ANIMATIONS = 6;
 const int MAX_PIXELSTRIPS = 1;
 const int BRIGHTNESS = 128;
 const int I2C_ADDRESS = 4;
@@ -27,10 +29,14 @@ void setup() {
   digitalWrite(LED_BUILTIN, LOW);
 
   // set up all Animations
-  animation[1] = new PulseAnimation();
-  animation[2] = new RedAnimation();
-  animation[3] = new BlueAnimation();
-  animation[0] = new CargoHatchPanel();
+  animation[0] = new tippinglight();
+  animation[1] = new RedAnimation();
+  animation[2] = new BlueAnimation();
+  animation[3] = new CargoHatchPanel();
+  animation[4] = new RainbowAnimation();
+  animation[5] = new PulseAnimation();
+
+
 
 
   // set up all PixelStrips
