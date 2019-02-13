@@ -5,9 +5,9 @@ int pixelState = 0;
 
 int Add_Subbtract = 1;
 int currentPixel = 1;
-long PixelColour1 = (0x55ff00);
-long PixelColour2 = (0xff0055);
-long PixelColour3 = (0x55ff00);
+long PixelColour1 = (0xf0f000);
+long PixelColour2 = (0xffffff);
+long PixelColour3 = (0xf0f000);
 
 void CargoHatchPanel::reset(Adafruit_NeoPixel *strip) {
   strip->begin();

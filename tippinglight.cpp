@@ -11,7 +11,7 @@ void tippinglight::reset(Adafruit_NeoPixel *strip) {
 
 void tippinglight::draw(Adafruit_NeoPixel *strip) {
   if (isTimedout()) {
-    for (int i = 1; i < strip->numPixels(); i++) {
+    for (int i = 0; i < strip->numPixels(); i++) {
       strip->setPixelColor (i, colour);
     }
     strip->show();

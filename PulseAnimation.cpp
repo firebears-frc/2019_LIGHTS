@@ -4,8 +4,8 @@
 PulseAnimation::PulseAnimation() {
   colorCount = 2;
   colorList = (uint32_t*)malloc(colorCount * sizeof(uint32_t));
-  colorList[0] = 0x008800;
-  colorList[1] = 0x404000;
+  colorList[0] = 0x842000;
+  colorList[1] = 0x804000;
 }
 
 PulseAnimation::PulseAnimation(int n) {

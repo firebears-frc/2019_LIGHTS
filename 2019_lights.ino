@@ -10,9 +10,20 @@
 #include "RainbowAnimation.h"
 
 const int MAX_ANIMATIONS = 6;
-const int MAX_PIXELSTRIPS = 1;
-const int BRIGHTNESS = 128;
+const int MAX_PIXELSTRIPS = 3;
+const int BRIGHTNESS = 50;
 const int I2C_ADDRESS = 4;
+
+const int BLUE_ANIMATION = 2;
+const int CARGOHATCHPANEL_ANIMATION = 3;
+const int PULSE_ANIMATION = 5;
+const int RAINBOW_ANIMATION = 4;
+const int RED_ANIMATION = 1;
+const int TIPPINGLIGHT_ANIMATION = 0;
+
+const int ELEVATOR_STRIP = 0;
+const int SUPPORT_STRIP = 1;
+const int AFRAME_STRIP = 2;
 
 PixelStrip *strip[MAX_PIXELSTRIPS];
 Animation *animation[MAX_ANIMATIONS];
@@ -27,21 +38,20 @@ void setup() {
   Wire.onReceive(receiveEvent);
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
-
   // set up all Animations
-  animation[0] = new tippinglight();
-  animation[1] = new RedAnimation();
-  animation[2] = new BlueAnimation();
-  animation[3] = new CargoHatchPanel();
-  animation[4] = new RainbowAnimation();
-  animation[5] = new PulseAnimation();
+  animation[TIPPINGLIGHT_ANIMATION] = new tippinglight();
+  animation[RED_ANIMATION ] = new RedAnimation();
+  animation[BLUE_ANIMATION] = new BlueAnimation();
+  animation[CARGOHATCHPANEL_ANIMATION] = new CargoHatchPanel();
+  animation[RAINBOW_ANIMATION] = new RainbowAnimation();
+  animation[PULSE_ANIMATION] = new PulseAnimation();
 
 
-
-
+  strip[ELEVATOR_STRIP] = new PixelStrip(8, 2, NEO_GRB);
+  strip[SUPPORT_STRIP] = new PixelStrip(8, 3, NEO_GRB);
+  strip[AFRAME_STRIP] = new PixelStrip(8, 4, NEO_GRB);
   // set up all PixelStrips
   for (int s = 0; s < MAX_PIXELSTRIPS; s++) {
-    strip[s] = new PixelStrip(36, 7 + s, NEO_GRB);
     strip[s]->setup();
     strip[s]->setAnimation(animation[0]);
     strip[s]->setBrightness(BRIGHTNESS);
