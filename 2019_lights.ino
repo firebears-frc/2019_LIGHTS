@@ -8,10 +8,17 @@
 #include "CargoHatchPanel.h"
 #include "tippinglight.h"
 #include "RainbowAnimation.h"
+#include "RocketAnimation.h"
 
+<<<<<<< HEAD
 const int MAX_ANIMATIONS = 6;
 const int MAX_PIXELSTRIPS = 3;
 const int BRIGHTNESS = 50;
+=======
+const int MAX_ANIMATIONS = 7;
+const int MAX_PIXELSTRIPS = 1;
+const int BRIGHTNESS = 128;
+>>>>>>> f093a13d896460afeda817792460bb3984e3bc76
 const int I2C_ADDRESS = 4;
 
 const int BLUE_ANIMATION = 2;
@@ -39,12 +46,24 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
   // set up all Animations
+<<<<<<< HEAD
   animation[TIPPINGLIGHT_ANIMATION] = new tippinglight();
   animation[RED_ANIMATION ] = new RedAnimation();
   animation[BLUE_ANIMATION] = new BlueAnimation();
   animation[CARGOHATCHPANEL_ANIMATION] = new CargoHatchPanel();
   animation[RAINBOW_ANIMATION] = new RainbowAnimation();
   animation[PULSE_ANIMATION] = new PulseAnimation();
+=======
+  animation[0] = new tippinglight();
+  animation[1] = new RedAnimation();
+  animation[2] = new BlueAnimation();
+  animation[3] = new CargoHatchPanel();
+  animation[4] = new RainbowAnimation();
+  animation[5] = new PulseAnimation();
+  animation[6] = new RocketAnimation();
+
+
+>>>>>>> f093a13d896460afeda817792460bb3984e3bc76
 
 
   strip[ELEVATOR_STRIP] = new PixelStrip(8, 2, NEO_GRB);
