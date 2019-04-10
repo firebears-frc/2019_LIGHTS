@@ -2,27 +2,28 @@
 #include <Adafruit_NeoPixel.h>
 #include "tippinglight.h"
 
-long colour = 0;
+long colour9 = 0;
 
 void tippinglight::reset(Adafruit_NeoPixel *strip) {
   strip->begin();
-  setTimeout(waitTime);
+
 }
 
 void tippinglight::draw(Adafruit_NeoPixel *strip) {
   if (isTimedout()) {
     for (int i = 0; i < strip->numPixels(); i++) {
-      strip->setPixelColor (i, colour);
+      strip->setPixelColor (i, colour9);
     }
+    delay(waitTime);
     strip->show();
 
-    if (colour == 0) {
-      colour = PixelColour1;
+    if (colour9 == 0) {
+      colour9 = PixelColour8;
     }
     else {
-      colour = 0;
+      colour9 = 0;
     }
-    setTimeout(waitTime);
+
   }
 }
 

@@ -61,7 +61,7 @@ void RainbowAnimation::draw(Adafruit_NeoPixel *strip) {
     setTimeout(waitTimec);
     multc = multc + 1;
   }
-  if (multc > 12){
+  if (multc > 42){
     multc = 0;
   }
 }

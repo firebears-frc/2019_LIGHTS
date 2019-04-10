@@ -71,6 +71,7 @@ void RocketAnimation::draw(Adafruit_NeoPixel *strip) {
       pixr = 0;
       lightNumr = random(25, 35);
     }
+  
     setTimeout(waitTimer);
 
   }

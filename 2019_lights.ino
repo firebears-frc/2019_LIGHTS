@@ -5,22 +5,26 @@
 #include "PulseAnimation.h"
 #include "RedAnimation.h"
 #include "BlueAnimation.h"
-#include "CargoHatchPanel.h"
+#include "CargoAnimation.h"
+#include "HatchPanelAnimation.h"
 #include "tippinglight.h"
 #include "RainbowAnimation.h"
 #include "RocketAnimation.h"
+#include "IseeyouAnimation.h"
 
-const int MAX_ANIMATIONS = 6;
+const int MAX_ANIMATIONS = 9;
 const int MAX_PIXELSTRIPS = 3;
-const int BRIGHTNESS = 50;
+const int BRIGHTNESS = 25;
 const int I2C_ADDRESS = 4;
-
-const int BLUE_ANIMATION = 2;
-const int CARGOHATCHPANEL_ANIMATION = 3;
-const int PULSE_ANIMATION = 5;
-const int RAINBOW_ANIMATION = 4;
-const int RED_ANIMATION = 1;
-const int TIPPINGLIGHT_ANIMATION = 0;
+const int TIPPINGLIGHT = 0;
+const int REDANIMATION = 1;
+const int BLUEANIMATION = 2;
+const int CARGOANIMATION = 3;
+const int HATCHPANELANIMATION = 4;
+const int RAINBOWANIMATION = 5;
+const int PULSEANIMATION = 6;
+const int ROCKETANIMATION = 7;
+const int ISEEYOUANIMATION = 8;
 
 const int ELEVATOR_STRIP = 0;
 const int SUPPORT_STRIP = 1;
@@ -40,23 +44,28 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
   // set up all Animations
-  animation[TIPPINGLIGHT_ANIMATION] = new tippinglight();
-  animation[RED_ANIMATION ] = new RedAnimation();
-  animation[BLUE_ANIMATION] = new BlueAnimation();
-  animation[CARGOHATCHPANEL_ANIMATION] = new CargoHatchPanel();
-  animation[RAINBOW_ANIMATION] = new RainbowAnimation();
-  animation[PULSE_ANIMATION] = new PulseAnimation();
+  animation[TIPPINGLIGHT] = new tippinglight();
+  animation[REDANIMATION] = new RedAnimation();
+  animation[BLUEANIMATION] = new BlueAnimation();
+  animation[CARGOANIMATION] = new CargoAnimation();
+  animation[HATCHPANELANIMATION] = new HatchPanelAnimation();
+  animation[RAINBOWANIMATION] = new RainbowAnimation();
+  animation[PULSEANIMATION] = new PulseAnimation();
+  animation[ROCKETANIMATION] = new RocketAnimation();
+  animation[ISEEYOUANIMATION] = new IseeyouAnimation();
+  // set up all PixeLStrips
 
-  strip[ELEVATOR_STRIP] = new PixelStrip(8, 2, NEO_GRB);
-  strip[SUPPORT_STRIP] = new PixelStrip(8, 3, NEO_GRB);
-  strip[AFRAME_STRIP] = new PixelStrip(8, 4, NEO_GRB);
-  // set up all PixelStrips
+  strip[ELEVATOR_STRIP] = new PixelStrip(121, 1, NEO_GRB);
+  strip[SUPPORT_STRIP] = new PixelStrip(100, 3, NEO_GRB);
+  strip[AFRAME_STRIP] = new PixelStrip(108, 4, NEO_GRB);
   for (int s = 0; s < MAX_PIXELSTRIPS; s++) {
     strip[s]->setup();
-    strip[s]->setAnimation(animation[0]);
+    strip[s]->setAnimation(animation[REDANIMATION]);
     strip[s]->setBrightness(BRIGHTNESS);
+
+
   }
-  Serial.begin(9600);
+
 }
 
 void loop() {
@@ -87,8 +96,8 @@ void receiveEvent(int howMany) {
     }
     digitalWrite(LED_BUILTIN, HIGH);
     wireTimeout = millis() + 500;
-    Serial.print("receiveEvent(");
+   /* Serial.print("receiveEvent(");
     Serial.print(s); Serial.print(",");
-    Serial.print(a); Serial.println(")");
+    Serial.print(a); Serial.println(")");*/
   }
 }

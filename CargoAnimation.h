@@ -1,16 +1,16 @@
-#ifndef CargoHatchPanel_h
-#define CargoHatchPanel_h
+#ifndef CargoAnimation_h
+#define CargoAnimation_h
 #include <Animation.h>
 
 /**
 
 */
-class CargoHatchPanel : public Animation {
+class CargoAnimation : public Animation {
   public:
     void reset(Adafruit_NeoPixel *strip);
     void draw(Adafruit_NeoPixel *strip);
     unsigned long waitTime = 1;
-    unsigned long color = 0x008800;
+    unsigned long color = 0x558800;
   private:
 };
 #endif
